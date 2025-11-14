@@ -2,7 +2,96 @@
 
 A robust multi-user chat application built in Java, featuring public, private, and group messaging capabilities with an enhanced graphical user interface.
 
-## Features
+JavaChatBot is a small, classic Java socket-based chat application composed of a server and a client. It demonstrates a simple multi-client chat server and a GUI/text client built with plain Java (no external frameworks). The project includes compiled class files and source files for both server and client.
+
+## Contents
+
+- `ChatServer/` - Server implementation and source files.
+   - `src/` - Java source (`*.java`) and compiled class files (`*.class`).
+- `ChatClient/` - Client implementation and source files.
+   - `src/` - Java source (`*.java`) and compiled class files (`*.class`).
+- `index.html` - (optional) project landing page.
+
+## Prerequisites
+
+- Java JDK 8 or newer installed and `javac`/`java` available on your PATH.
+- Basic familiarity with running Java programs from the command line.
+
+## Quick build & run (command line)
+
+This repository includes compiled `.class` files, but if you want to recompile the source follow these steps.
+
+1. Build the server
+
+    Open a terminal, go to the server source directory and compile all .java files:
+
+    ```powershell
+    cd ChatServer/src
+    javac -d ../out *.java
+    ```
+
+    Run the server (the main class is either `ChatServer` or `Server` depending on which file contains `public static void main`):
+
+    ```powershell
+    cd ..\out
+    java ChatServer
+    # or
+    java Server
+    ```
+
+2. Build the client
+
+    In a new terminal, compile the client source:
+
+    ```powershell
+    cd ChatClient/src
+    javac -d ../out *.java
+    ```
+
+    Run the client (the main class is typically `ChatClient` or `Client`):
+
+    ```powershell
+    cd ..\out
+    java ChatClient
+    # or
+    java Client
+    ```
+
+Notes:
+- If you get "Could not find or load main class" when running, check which class contains `public static void main(String[] args)` and run that class name instead.
+- The code uses plain sockets; the server listens on a port (check the server source for the default port). If the server and client run on the same machine, use `localhost` or `127.0.0.1`.
+
+## Project structure
+
+High-level view:
+
+```
+ChatServer/
+   src/        # server .java and .class files
+ChatClient/
+   src/        # client .java and .class files
+index.html
+README.md
+```
+
+## Development notes
+
+- This is intended as an educational example — minimal error handling, no authentication, and plain-text messaging.
+- You can modernize the project by:
+   - Converting to a build tool (Maven/Gradle)
+   - Adding unit tests and CI
+   - Migrating to NIO or adding SSL/TLS for transport security
+
+## License & Attribution
+
+Feel free to use and modify this code for learning and non-commercial projects. Add a license file if you need a specific license.
+
+## Contact
+
+If you want help improving or packaging this project, open an issue or contact the repository owner.
+
+---
+Updated README to include build/run instructions and structure.
 
 - **Public Chatting**: Broadcast messages to all connected users
 - **Private Messaging**: Send direct messages using `@username message`
