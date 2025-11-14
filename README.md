@@ -1,55 +1,113 @@
-Mohd's MultiUserChat
-=====================
+# Mohd's MultiUser Chat Application
 
-A multi user chat application in java with public chatting, private chatting, group chatting options
+A robust multi-user chat application built in Java, featuring public, private, and group messaging capabilities with an enhanced graphical user interface.
 
-### Welcome to My GitHub Page of Java GUI Chat Client Project.
-This java Chat client shows the layman way to develop a chat application in java with public chatting, private chatting, group chatting options.
+## Features
 
-Enhanced GUI with better layout, colors, and a dedicated online users panel.
+- **Public Chatting**: Broadcast messages to all connected users
+- **Private Messaging**: Send direct messages using `@username message`
+- **Group Messaging**: Send messages to multiple users using `@user1 user2 ...#message`
+- **File Sharing**: Share text files with other users
+- **Online Users List**: View and manage connected users
+- **Enhanced GUI**: Modern layout with colors, fonts, and dedicated panels
+- **Real-time Communication**: Instant message delivery with timestamps
 
+## Prerequisites
 
-To run Chat Client in terminal, browse to src folder and type the following or run project through IDE-
-```
-javac ChatServer.java 
-java ChatServer
-```
+- Java Development Kit (JDK) 8 or higher
+- Basic understanding of running Java applications
 
+## Installation
 
-*  Enter port number in input dialog for eg: 9000
-*  Maximum 3 connections accepted which is a pre-defined number
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mohdkaif3002/JavaChat_Application.git
+   cd JavaChat_Application
+   ```
 
+2. Compile the server:
+   ```bash
+   cd ChatServer/src
+   javac Server.java
+   ```
 
-To run Chat Client in terminal, browse to src folder and type the following or run project through IDE-
-```
-javac ChatClient.java 
-java ChatClient
-```
+3. Compile the client:
+   ```bash
+   cd ../../ChatClient/src
+   javac ChatClient.java
+   ```
 
+## Usage
 
-*  Enter ip address of server, port number on which connection is opened.
-*  Enter your name in name input dialog.
-*  Type your messages and enter **Send** button.
-*  By default sent messages will be **broadcasted**
-*  To send private messages, type - `@<receievername> <message>`
-*  To send private messages to many users, type - `@<receievername1> <receivername2> ....<receivernameN>#<message>`
-*  To see list of online users - Press **List of all Users** button
-*  To quit chat room - type **QUIT**
+### Running the Server
 
-This is what it looks like :)
-![You may open different clients by running different instances of Class](https://raw.github.com/pranayaggarwal25/projectImages/master/Screenshot.png)
+1. Navigate to the server directory:
+   ```bash
+   cd ChatServer/src
+   ```
 
+2. Run the server:
+   ```bash
+   java Server
+   ```
 
+3. Enter the desired port number (e.g., 9000) when prompted.
 
-### Client Connection Limit
-Maximum number of chat clients is a hard-coded value (currently 10) in ChatServer. After that it doesn't create any connection queue, it simply keeps on rejecting all incoming requests till total number of connections are full.
+### Running the Client
 
+1. Open a new terminal and navigate to the client directory:
+   ```bash
+   cd ChatClient/src
+   ```
 
-### Author
-Hi All, Myself Mohd. This is a customized version of a multi-user chat application in Java.
+2. Run the client:
+   ```bash
+   java ChatClient
+   ```
 
+3. Enter the server IP address (default: 127.0.0.1) and port number.
 
-### Support or Contact
-Having trouble with Pages? Check out the documentation at http://help.github.com/pages or contact support@github.com and we’ll help you sort it out.
+4. Enter your username and password (default password: 123).
 
-Created By Mohammad Kaif
+## How to Use
+
+- **Send Messages**: Type your message and click "Send" or press Enter
+- **Private Messages**: Use `@username message` format
+- **Group Messages**: Use `@user1 user2 ...#message` format
+- **View Online Users**: Click "List Users" button
+- **Send Files**: Click "Send File" and select a text file
+- **Quit**: Type "QUIT" in the message field
+
+## Screenshots
+
+*Enhanced GUI with modern layout and user panel.*
+
+## Technical Details
+
+- **Maximum Connections**: 10 clients (configurable in Server.java)
+- **Authentication**: Simple username/password system
+- **Networking**: Socket-based communication
+- **GUI Framework**: Java Swing
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Author
+
+**Mohd Kaif** - Customized and enhanced version
+
+Original concept by Mohammad Kaif
+
+## Acknowledgments
+
+- Inspired by basic Java networking tutorials
+- Enhanced with modern GUI practices
