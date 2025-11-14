@@ -3,6 +3,8 @@ import java.nio.channels.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -45,9 +47,17 @@ public class Server {
 			try {
 				while ((message = input.readLine()) != null) {
 					if (flag == 1) {
-
-						clientNames.add(message);
-						tellName(message, index);
+						String[] parts = message.split(":");
+						if (parts.length != 2 || !parts[1].equals("123")) {
+							PrintWriter writer = Clients.get(index);
+							writer.println("Authentication failed. Disconnecting.");
+							writer.flush();
+							socket.close();
+							Clients.remove(index);
+							return;
+						}
+						clientNames.add(parts[0]);
+						tellName(parts[0], index);
 						flag--;
 						continue;
 
@@ -110,6 +120,10 @@ public class Server {
 		}
 	}
 
+	private String getTimestamp() {
+		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+	}
+
 	public void go() {
 
 		Clients = new ArrayList<PrintWriter>();
@@ -117,9 +131,9 @@ public class Server {
 		removeNames = new ArrayList<String>();
 		try {
 			// ServerSocket serversoc = new ServerSocket(9000,1);
-			Thread threads[] =new Thread[3];
+			Thread threads[] =new Thread[10];
 			int i=0;
-			while (i<3) {
+			while (i<10) {
 
 				Socket clientsocket = serversoc.accept();
 				PrintWriter writer = new PrintWriter(
@@ -163,7 +177,7 @@ public class Server {
 	public void tellLeave(String message, int x, String name) {
 		// Iterator<PrintWriter> it = Clients.iterator();
 
-		tellEveryone(name + " is leaving..");
+		tellEveryone(name + " is leaving at " + getTimestamp());
 		removeNames.add(name);
 		Iterator<String> itr = removeNames.iterator();
 		while (itr.hasNext()) {
@@ -217,7 +231,7 @@ public class Server {
 			writer = it.next();
 		}
 
-		writer.println("Private message for you by " + sendername + " : "
+		writer.println("Private message for you by " + sendername + " at " + getTimestamp() + " : "
 				+ message);
 		writer.flush();
 		
@@ -268,7 +282,7 @@ public class Server {
 			try {
 				PrintWriter writer = (PrintWriter) it.next();
 				// String s=clientNames.get(x);
-				writer.println("Broadcasted message by " + name + " : "
+				writer.println("Broadcasted message by " + name + " at " + getTimestamp() + " : "
 						+ message);
 				writer.flush();
 
@@ -285,7 +299,7 @@ public class Server {
 			try {
 				PrintWriter writer = (PrintWriter) it.next();
 				writer.println("Client - " + message
-						+ " has entered the room!!");
+						+ " has entered the room at " + getTimestamp() + "!!");
 				writer.flush();
 			} catch (Exception e) {
 				e.printStackTrace();

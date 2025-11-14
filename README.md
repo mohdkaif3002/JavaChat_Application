@@ -1,10 +1,12 @@
-MultiUserChat
-=============
+Mohd's MultiUserChat
+=====================
 
-A multi user chat application in java with public chating, private chating, group chating options
+A multi user chat application in java with public chatting, private chatting, group chatting options
 
 ### Welcome to My GitHub Page of Java GUI Chat Client Project.
-This java Chat client shows the layman way to develop a chat application in java with public chating, private chating, group chating options options.
+This java Chat client shows the layman way to develop a chat application in java with public chatting, private chatting, group chatting options.
+
+Enhanced GUI with better layout, colors, and a dedicated online users panel.
 
 
 To run Chat Client in terminal, browse to src folder and type the following or run project through IDE-
@@ -40,12 +42,14 @@ This is what it looks like :)
 
 
 ### Client Connection Limit
-Maximum number of chat clients is a hard-coded value (currently 3) in ChatServer. After that it doesn't create any connection queue, it simply keeps on rejecting all incoming requests till total number of connections are full.
+Maximum number of chat clients is a hard-coded value (currently 10) in ChatServer. After that it doesn't create any connection queue, it simply keeps on rejecting all incoming requests till total number of connections are full.
 
 
 ### Author
-Hi All, Myself Pranay Kumar Agrawal (IIT Roorkee CSE '13). This was my first project over Github and first assessment in Java :) Apologies if any trouble arises up with the code.
+Hi All, Myself Mohd. This is a customized version of a multi-user chat application in Java.
 
 
 ### Support or Contact
 Having trouble with Pages? Check out the documentation at http://help.github.com/pages or contact support@github.com and we’ll help you sort it out.
+
+Created By Mohammad Kaif

@@ -1,4 +1,4 @@
-// Pranay
+// Mohammad Kaif
 
 To run Chat Client in terminal browse to sc folder and type - java ChatClient 
 or run project through IDE
